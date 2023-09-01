@@ -17,7 +17,7 @@ const lists= [
 ]
 
 //Today's list
-const todaysLists=[
+const todayslists=[
     {dateId: 1, listId: 1,TaskId: 1},
     {dateId: 2, listId: 2,TaskId: 2},
     {dateId: 3, listId: 5,TaskId: 3}
@@ -30,4 +30,4 @@ const tasks=[
     {title: 'Organize the summer clothes in the closet', description:'Need to sort out what to keep, donate, and throw away', priority:'1', status:true, notes:'make sure to put aside red dress for a friend'}
 ]
 
-module.exports={dates, lists, todaysLists, tasks}
+module.exports={dates, lists, todayslists, tasks}

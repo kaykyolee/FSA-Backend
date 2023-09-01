@@ -7,9 +7,10 @@ const dropTables=async()=>{
         await client.query(`
         DROP TABLE IF EXISTS dates;
         DROP TABLE IF EXISTS lists;
-        DROP TABLE IF EXISTS todaysLists;
         DROP TABLE IF EXISTS tasks;
+        DROP TABLE IF EXISTS todayslists;
         `)
+        console.log("Dropping tables...")
     }catch(error){
         throw error
     }
@@ -17,30 +18,35 @@ const dropTables=async()=>{
 
 //create tables
 const createTables=async()=>{
+    try{
+        console.log("Building tables...")
     await client.query(`
         CREATE TABLE dates (
             date_id SERIAL PRIMARY KEY,
-            date varchar(10) UNIQUE NOT NULL
+            date DATE UNIQUE NOT NULL
         );
         CREATE TABLE lists(
             list_id SERIAL PRIMARY KEY,
-            goal varchar(50) NOT NULL
+            goal VARCHAR(50) NOT NULL
         );
-        CREATE TABLE todaysLists(
-            todaysList_id SERIAL PRIMARY KEY,
+        CREATE TABLE tasks(
+            task_id SERIAL PRIMARY KEY,
+            title VARCHAR(50),
+            description TEXT,
+            priority VARCHAR(50),
+            status BOOLEAN NOT NULL,
+            notes TEXT
+        );
+        CREATE TABLE todayslists(
+            todayslist_id SERIAL PRIMARY KEY,
             date_id INTEGER REFERENCES dates(date_id) NOT NULL,
             list_id INTEGER REFERENCES lists(list_id) NOT NULL,  
             task_id INTEGER REFERENCES tasks(task_id) NOT NULL
         );
-        CREATE TABLE tasks(
-            task_id SERIAL PRIMARY KEY,
-            title varchar(50) NOT NULL,
-            description varchar(100),
-            priority varchar(50) NOT NULL,
-            status BOOLEAN NOT NULL,
-            notes varchar(100)
-        );
     `)
+    }catch (error){
+        throw error
+    }
 }
 
 
