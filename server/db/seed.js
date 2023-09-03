@@ -1,13 +1,17 @@
 
 const client=require('./client')
 
+const {dates, lists, tasks, todayslists}=require('./seedData')
+
+const {createDate}=require('./helpers/dates')
+
 //drop tables
 const dropTables=async()=>{
     try{
         await client.query(`
-        DROP TABLE IF EXISTS dates;
-        DROP TABLE IF EXISTS lists;
-        DROP TABLE IF EXISTS tasks;
+        DROP TABLE IF EXISTS dates cascade;
+        DROP TABLE IF EXISTS lists cascade;
+        DROP TABLE IF EXISTS tasks cascade;
         DROP TABLE IF EXISTS todayslists;
         `)
         console.log("Dropping tables...")
@@ -52,6 +56,17 @@ const createTables=async()=>{
 
 //insert mock data from seedData.js
 
+const createInitialDates = async ()=>{
+    try{
+        for (const dateName of dates){
+            await createDate ({date: dateName}) 
+        }
+        console.log ("created dates")
+    }catch(error){
+        throw error
+    }
+}
+
 
 //call functions to build database
 const rebuildDb = async()=>{
@@ -59,6 +74,10 @@ const rebuildDb = async()=>{
         client.connect()
         await dropTables()
         await createTables()
+
+        console.log("starting to seed...")
+        await createInitialDates();
+        console.log("created trainers")
     } catch(error){
         console.error (error)
     } finally {

@@ -4,7 +4,7 @@ const dates = [
     '09/01/2023',
     '09/02/2023',
     '09/03/2023',
-    '09/04/2034'
+    '09/04/2023'
 ]
 
 //list
@@ -16,12 +16,6 @@ const lists= [
     'Clean Up'
 ]
 
-//Today's list
-const todayslists=[
-    {dateId: 1, listId: 1,TaskId: 1},
-    {dateId: 2, listId: 2,TaskId: 2},
-    {dateId: 3, listId: 5,TaskId: 3}
-]
 
 //Tasks
 const tasks=[
@@ -30,4 +24,12 @@ const tasks=[
     {title: 'Organize the summer clothes in the closet', description:'Need to sort out what to keep, donate, and throw away', priority:'1', status:true, notes:'make sure to put aside red dress for a friend'}
 ]
 
-module.exports={dates, lists, todayslists, tasks}
+
+//Today's list
+const todayslists=[
+    {dateId: 1, listId: 1,TaskId: 1},
+    {dateId: 2, listId: 2,TaskId: 2},
+    {dateId: 3, listId: 5,TaskId: 3}
+]
+
+module.exports={dates, lists, tasks, todayslists}
