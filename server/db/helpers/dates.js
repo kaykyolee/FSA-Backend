@@ -11,11 +11,25 @@ const createDate = async ({ date }) => {
             RETURNING *;
             `,
       [date]
-    )
-    return dateName
+    );
+    return dateName;
   } catch (error) {
     throw error;
   }
-}
+};
 
-module.exports = {createDate}
+const getAllDates = async () => {
+  try {
+    const {
+      rows: [dateName],
+    } = await client.query(`
+            SELECT * 
+            FROM dates;
+            `);
+    return dateName;
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = { createDate, getAllDates };

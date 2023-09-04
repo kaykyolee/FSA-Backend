@@ -27,9 +27,9 @@ const tasks=[
 
 //Today's list
 const todayslists=[
-    {dateId: 1, listId: 1,TaskId: 1},
-    {dateId: 2, listId: 2,TaskId: 2},
-    {dateId: 3, listId: 5,TaskId: 3}
+    {dateId: 1, listId: 1,taskId: 1},
+    {dateId: 2, listId: 2,taskId: 2},
+    {dateId: 3, listId: 5,taskId: 3}
 ]
 
 module.exports={dates, lists, tasks, todayslists}
