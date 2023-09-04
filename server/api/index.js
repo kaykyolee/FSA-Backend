@@ -6,7 +6,7 @@ router.get('/health',(req,res,next)=>{
     res.send('OK');
 });
 
-//ROUTER: api/todayslist
-router.use('./todayslists',require('./todayslists'));
+// //ROUTER: api/todayslist
+// router.use('./todayslists',require('./todayslists'));
 
 module.exports=router;
