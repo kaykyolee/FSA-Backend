@@ -4,7 +4,7 @@ const router = express.Router();
 const client = require("../db/client");
 client.connect();
 
-const { getAllDates, getDateById, createNewDate } = require("../db/helpers/dates");
+const { getAllDates, getDateById, createNewDate } = require("./dates");
 
 //GET /api/health
 router.get("/health", (req, res, next) => {
