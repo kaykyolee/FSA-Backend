@@ -1,4 +1,5 @@
 const client = require("../client");
+const data=require('../seedData');
 
 const createDate = async ({ date }) => {
   try {
@@ -20,16 +21,41 @@ const createDate = async ({ date }) => {
 
 const getAllDates = async () => {
   try {
-    const {
-      rows: [dateName],
-    } = await client.query(`
+    const { rows } = await client.query(`
             SELECT * 
             FROM dates;
             `);
-    return dateName;
+    return rows;
   } catch (error) {
     throw error;
   }
 };
 
-module.exports = { createDate, getAllDates };
+const getDateById=async(dateId)=>{
+  try{
+    const {
+      rows:[dates]
+    }=await client.query(
+      `SELECT *
+      FROM dates
+      WHERE "dateId"=${dateId};`
+    )
+    return dates
+  }catch (error){
+    throw error
+  }
+}
+
+async function createNewDate(body){
+  try{
+    const date=body;
+    const dates=data.dates;
+    dates.push(body);
+    return date;
+  }catch (error){
+    throw error;
+  }
+}
+
+
+module.exports = { createDate, getAllDates, getDateById, createNewDate };
