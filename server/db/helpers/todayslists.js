@@ -1,15 +1,15 @@
 const client = require ('../client')
 
-async function createTodayslist({dateId, listId, taskId}){
+async function createTodayslist({scheduleId, listId, taskId}){
     try{
         const{
             rows:[todayslists],
         }=await client.query(`
-        INSERT INTO todayslists ("dateId","listId","taskId")
+        INSERT INTO todayslists ("scheduleId","listId","taskId")
         VALUES ($1,$2,$3)
         RETURNING *;
         `,
-        [dateId,listId,taskId]
+        [scheduleId,listId,taskId]
         )
         return todayslists
     } catch (error){

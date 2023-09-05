@@ -1,8 +1,8 @@
 const client = require("./client");
 
-const { dates, lists, tasks, todayslists } = require("./seedData");
+const { schedules, lists, tasks, todayslists } = require("./seedData");
 
-const { createDate, getAllDates } = require("./helpers/dates.js");
+const { createSchedule } = require("./helpers/schedules.js");
 const { createList } = require("./helpers/lists.js");
 const { createTask } = require("./helpers/tasks.js");
 const {createTodayslist} = require("./helpers/todayslists.js");
@@ -11,7 +11,7 @@ const {createTodayslist} = require("./helpers/todayslists.js");
 const dropTables = async () => {
   try {
     await client.query(`
-        DROP TABLE IF EXISTS dates cascade;
+        DROP TABLE IF EXISTS schedules cascade;
         DROP TABLE IF EXISTS lists cascade;
         DROP TABLE IF EXISTS tasks cascade;
         DROP TABLE IF EXISTS todayslists;
@@ -27,8 +27,8 @@ const createTables = async () => {
   try {
     console.log("Building tables...");
     await client.query(`
-        CREATE TABLE dates (
-            "dateId" SERIAL PRIMARY KEY,
+        CREATE TABLE schedules (
+            "scheduleId" SERIAL PRIMARY KEY,
             date DATE UNIQUE NOT NULL
         );
         CREATE TABLE lists(
@@ -45,7 +45,7 @@ const createTables = async () => {
         );
         CREATE TABLE todayslists(
             todayslist_id SERIAL PRIMARY KEY,
-            "dateId" INTEGER REFERENCES dates("dateId") NOT NULL,
+            "scheduleId" INTEGER REFERENCES schedules("scheduleId") NOT NULL,
             "listId" INTEGER REFERENCES lists("listId") NOT NULL,  
             "taskId" INTEGER REFERENCES tasks("taskId") NOT NULL
         );
@@ -57,12 +57,12 @@ const createTables = async () => {
 
 //insert mock data from seedData.js
 
-const createInitialDates = async () => {
+const createInitialSchedules = async () => {
   try {
-    for (const dateName of dates) {
-      await createDate({ date: dateName });
+    for (const schedule of schedules) {
+      await createSchedule({date:schedule});
     }
-    console.log("created dates");
+    console.log("created schedules");
   } catch (error) {
     throw error;
   }
@@ -109,11 +109,11 @@ const rebuildDb = async () => {
     await createTables();
 
     console.log("starting to seed...");
-    await createInitialDates();
+    await createInitialSchedules();
     await createInitialLists();
     await createInitialTasks();
     await createInitialTodayslists();
-    console.log("created trainers");
+    console.log("created todolist");
   } catch (error) {
     console.error(error);
   } finally {

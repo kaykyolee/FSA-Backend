@@ -1,10 +1,10 @@
 //Date
-const dates = [
-    '08/31/2023',
-    '09/01/2023',
-    '09/02/2023',
-    '09/03/2023',
-    '09/04/2023'
+const schedules = [
+    '2023-08-31',
+    '2023-09-01',
+    '2023-09-02',
+    '2023-09-03',
+    '2023-09-04'
 ]
 
 //list
@@ -27,9 +27,9 @@ const tasks=[
 
 //Today's list
 const todayslists=[
-    {dateId: 1, listId: 1,taskId: 1},
-    {dateId: 2, listId: 2,taskId: 2},
-    {dateId: 3, listId: 5,taskId: 3}
+    {scheduleId: 1, listId: 1,taskId: 1},
+    {scheduleId: 2, listId: 2,taskId: 2},
+    {scheduleId: 3, listId: 5,taskId: 3}
 ]
 
-module.exports={dates, lists, tasks, todayslists}
+module.exports={schedules, lists, tasks, todayslists}

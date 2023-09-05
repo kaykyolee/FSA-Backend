@@ -2,8 +2,13 @@
 const express=require('express');
 const app=express();
 
+app.use(express.json());
+
 const PORT=5500;
-// const client = require('./db/client.js')
+
+const client = require('./db/client.js')
+
+client.connect();
 
 //init morgan
 const morgan=require('morgan');
