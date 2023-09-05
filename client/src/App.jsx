@@ -1,8 +1,10 @@
 import { useState,useEffect } from 'react'
 import './App.css'
 import ScheduleList from './components/schedulelist';
+import Navbar from './components/navbar';
 import { fetchAllSchedule } from './helpers/schedule';
-import { all } from 'axios'
+import {Routes, Route} from 'react-router-dom';
+import { all } from 'axios';
 
 function App() {
   const [allSchedule, setAllSchedule] = useState([])
@@ -20,9 +22,12 @@ function App() {
   return (
     <>
       <div>
-        <ScheduleList allSchedule={allSchedule}/>
+        <Navbar/>
+        <Routes>
+          <Route path='/' element = {<ScheduleList allSchedule={allSchedule}/>}/>
+          {/* <Route path='/goals' element = {<Lists/>}> */}
+        </Routes>
       </div>
-
     </>
   )
 }
