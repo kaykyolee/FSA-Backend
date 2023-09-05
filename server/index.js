@@ -2,9 +2,13 @@
 const express=require('express');
 const app=express();
 
-app.use(express.json());
 
 const PORT=5500;
+
+//middleware function to parse incoming JSON data from HTTP requests
+
+app.use(express.json());
+
 
 const client = require('./db/client.js')
 
