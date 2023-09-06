@@ -19,9 +19,9 @@ const lists= [
 
 //Tasks
 const tasks=[
-    {title: 'Drink 8 cups of water', description:'Make sure to drink lukewarm water', priority:'3', status:true, notes:'need to change the water filter'},
-    {title: 'Do yoga two times for 15 mins', description:'Better to do morning and night', priority:'2', status:false, notes:'try not to skip meditation part'},
-    {title: 'Organize the summer clothes in the closet', description:'Need to sort out what to keep, donate, and throw away', priority:'1', status:true, notes:'make sure to put aside red dress for a friend'}
+    {title: 'Drink 8 cups of water', description:'Make sure to drink lukewarm water', priority:'Low', status:true, notes:'need to change the water filter'},
+    {title: 'Do yoga two times for 15 mins', description:'Better to do morning and night', priority:'Medium', status:false, notes:'try not to skip meditation part'},
+    {title: 'Organize the summer clothes in the closet', description:'Need to sort out what to keep, donate, and throw away', priority:'High', status:true, notes:'make sure to put aside red dress for a friend'}
 ]
 
 
