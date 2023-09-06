@@ -12,11 +12,14 @@ export default function AddSchedule() {
     event.preventDefault();
     try {
       createSchedule(scheduleId, date);
+      window.location.reload();
       navigate("/");
     } catch (error) {
       alert("There was an error creating a new date");
     }
   }
+
+
   return (
     <section className="addSchedule">
       <h3>Add a new date</h3>

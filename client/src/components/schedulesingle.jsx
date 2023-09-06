@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import { fetchSingleSchedule } from '../helpers/schedule';
 import { useParams } from "react-router-dom";
 import DeleteScheduleButton from './scheduledelete';
-import ListPage from './listpage'
+import ListDate from './listdate'
 
 
 export default function SingleSchedule (){
@@ -31,7 +31,7 @@ export default function SingleSchedule (){
         <DeleteScheduleButton scheduleId={scheduleId}/>
         </div>
         <div>
-            <h5>Choose a goal for today: </h5><ListPage/> 
+            <h5>Choose a goal for today: </h5><ListDate/> 
         </div>
         </div>
     )
